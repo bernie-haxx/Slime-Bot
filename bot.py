@@ -69,7 +69,7 @@ async def on_message(message):
     
     if message.content == 'hi':
         await message.channel.send(
-            f'Waspoppin? "_Tengu\'s pimple_"\n Brand new whip justed hopped in!'
+            f'Waspoppin? "_Tengu\'s pimple_"\n Brand new whip just hopped in!'
         )
 
 
