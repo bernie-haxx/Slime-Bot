@@ -61,6 +61,16 @@ async def roll(ctx, number_of_dice: int, number_of_sides: int):
     ]
     await ctx.send(', '.join(dice))
 
+# Hi command
+@client.event
+async def on_message(message):
+    if message.author == client.user:
+        return
+    
+    if message.content == 'hi':
+        await message.channel.send(
+            f'{bot.user} Waspoppin?( @Tengu pimple)\n Brand new whip justed hopped in!'
+        )
 # Create channel command
 @bot.command(name="create-channel")
 @commands.has_role('JACKBOYS')
