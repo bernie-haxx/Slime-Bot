@@ -47,7 +47,7 @@ async def roll(ctx, number_of_dice: int, number_of_sides: int):
 
 # Create channel command
 @bot.command(name="create-channel")
-@commands.has_role('admin')
+@commands.has_role('JACKBOYS')
 async def create_channel(ctx, channel_name: str):
     guild = ctx.guild
     existing_channel = discord.utils.get(guild.channels, name=channel_name)
@@ -55,5 +55,9 @@ async def create_channel(ctx, channel_name: str):
         print(f'Creating a new channel: {channel_name}')
         await guild.create_text_channel(channel_name)
 
+@bot.event
+async def on_command_error(ctx, error):
+    if isinstance(error, commands.errors.CheckFailure):
+        await ctx.send('You do not have the slyat for this command')
 
 bot.run(TOKEN)
