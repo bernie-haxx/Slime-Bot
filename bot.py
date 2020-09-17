@@ -9,7 +9,7 @@ load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 
 bot = commands.Bot(command_prefix='!')
-client = discord.Client()
+
 
 # Bot activated event
 @bot.event
@@ -62,15 +62,17 @@ async def roll(ctx, number_of_dice: int, number_of_sides: int):
     await ctx.send(', '.join(dice))
 
 # Hi command
-@client.event
+@bot.listen()
 async def on_message(message):
-    if message.author == client.user:
+    if message.author == bot.user:
         return
     
     if message.content == 'hi':
         await message.channel.send(
-            f'{bot.user} Waspoppin?( @Tengu pimple)\n Brand new whip justed hopped in!'
+            f'{bot.user} Waspoppin? _@Tengu \'s pimple_\n Brand new whip justed hopped in!'
         )
+
+
 # Create channel command
 @bot.command(name="create-channel")
 @commands.has_role('JACKBOYS')
