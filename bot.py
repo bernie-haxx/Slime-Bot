@@ -12,10 +12,13 @@ client = discord.Client()
 
 @client.event
 async def on_ready():
-    for guild in client.guilds:
-        if guild.name == GUILD:
-            break
-
+    """
+    Discord.utils.find() is one utility that can improve the simplicity and readability of
+    this code by replacing the for loop with a inituitive, abstracted function:
+    
+    Also known as a predicate.
+    """
+    guild = discord.utils.find(lambda g: g.name == GUILD, client.guilds)
     print(
         f'{client.user} pulled the F up in to the following skreet:\n'
         f'{guild.name}(id: {guild.id})'
