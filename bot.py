@@ -18,7 +18,7 @@ async def on_ready():
     
     Also known as a predicate.
     """
-    guild = discord.utils.find(lambda g: g.name == GUILD, client.guilds)
+    guild = discord.utils.get(client.guilds, name=GUILD)
     print(
         f'{client.user} pulled the F up in to the following skreet:\n'
         f'{guild.name}(id: {guild.id})'
