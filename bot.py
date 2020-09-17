@@ -15,6 +15,7 @@ bot = commands.Bot(command_prefix='!')
 async def on_ready():
     print(f'{bot.user.name} has pulled the F up!')
 
+# Member Client Side
 @bot.event
 async def on_member_join(member):
     await member.create_dm()
@@ -22,6 +23,12 @@ async def on_member_join(member):
         f"It's Lit!!\n {member.name} pulled up wit the cactus juice! \nFirst of, Listen to Scotty and roll one",
     )
 
+@bot.event
+async def on_member_remove(member):
+    await member.create_dm()
+    await member.dm_channel.send(
+        f"Shiiii\n You gotta leave?:sob:\n Anyway come back ,okay?\n:point_right: :point_left"
+    )
 # 69 command area
 @bot.command(name='69')
 async def six_nine(ctx):
