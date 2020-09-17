@@ -19,7 +19,7 @@ async def on_ready():
 async def on_member_join(member):
     await member.create_dm()
     await member.dm_channel.send(
-        f"It's Lit!!, {member.name} pulled up wit the cactus juice! \nFirst of, Listen to Scotty and be roll one",
+        f"It's Lit!!, {member.name} pulled up wit the cactus juice! \nFirst of, Listen to Scotty and roll one",
     )
 
 # 69 command area
