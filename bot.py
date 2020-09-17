@@ -15,6 +15,13 @@ bot = commands.Bot(command_prefix='!')
 async def on_ready():
     print(f'{bot.user.name} has pulled the F up!')
 
+@bot.event
+async def on_member_join(member):
+    await member.create_dm()
+    await member.dm_channel.send(
+        f"It's Lit!!, {member.name} pulled up wit the cactus juice!",
+        f"First of, Listen to Scotty and be chill Fahm",
+    )
 
 # 69 command area
 @bot.command(name='69')
