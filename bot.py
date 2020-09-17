@@ -9,6 +9,7 @@ load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 
 bot = commands.Bot(command_prefix='!')
+client = discord.Client()
 
 # Bot activated event
 @bot.event
@@ -24,11 +25,13 @@ async def on_member_join(member):
     )
 
 @bot.event
-async def on_member_remove(member):
-    await member.create_dm()
-    await member.dm_channel.send(
-        f"Shiiii\n You gotta leave? :sob: \n Anyway come back ,okay?\n :point_right: :point_left"
-    )
+async def on_error(event, *args, **kwargs):
+    with open('err.log', 'a') as f:
+        if event == 'on_message':
+            f.write(f'Unhandled message: {args[0]}\n')
+        else:
+            raise discord.DiscordException
+
 # 69 command area
 @bot.command(name='69')
 async def six_nine(ctx):
